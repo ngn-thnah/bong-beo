@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bông Béo - cửa hàng đồ ăn vặt ngon, giá hợp lý.">
+  <title>Bông Béo | Thiên đường ăn vặt</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,sans-serif;background:#fff8f2;color:#383238}
+    header{background:#ff719a;color:#fff;padding:16px 7%;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+    .logo{font-size:29px;font-weight:800;letter-spacing:.5px}.logo span{color:#fff2a8}
+    nav{display:flex;gap:18px;flex-wrap:wrap}
+    nav a{color:#fff;text-decoration:none;font-weight:bold}nav a:hover{color:#fff2a8}
+    .hero{min-height:370px;padding:55px 8%;display:flex;align-items:center;justify-content:space-around;gap:25px;flex-wrap:wrap;text-align:center;background:linear-gradient(120deg,#ff9bb6,#ffd18f)}
+    .hero h1{font-size:clamp(34px,5vw,52px);color:#fff;margin-bottom:14px}
+    .hero p{font-size:19px;margin-bottom:24px}
+    .hero-art{font-size:clamp(70px,12vw,125px)}
+    .btn{display:inline-block;border:0;border-radius:25px;padding:12px 25px;background:#ff477e;color:#fff;text-decoration:none;font-weight:bold;cursor:pointer}
+    .btn:hover{background:#e93670}
+    .section{padding:52px 8%;text-align:center}
+    .section h2,.about h2,.contact h2{font-size:30px;color:#f0447b;margin-bottom:12px}
+    .muted{color:#777;margin-bottom:25px}
+    .search{max-width:450px;width:100%;padding:13px 18px;margin:0 auto 28px;border:2px solid #ffb2c7;border-radius:25px;outline:none;font-size:15px}
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:23px}
+    .product{background:#fff;border-radius:18px;padding:14px;box-shadow:0 4px 15px #00000012;transition:.2s}
+    .product:hover{transform:translateY(-5px);box-shadow:0 8px 20px #ff719a35}
+    .product img{width:100%;height:175px;object-fit:cover;border-radius:12px;background:#ffe5ed}
+    .product h3{margin:13px 0 7px}.product p{color:#777;font-size:14px;min-height:34px}
+    .price{font-size:20px;font-weight:bold;color:#f0447b;margin:11px 0}
+    .product button{width:100%;border:0;border-radius:22px;padding:11px;background:#ff719a;color:white;font-weight:bold;cursor:pointer}
+    .product button:hover{background:#ed4779}
+    .about{padding:52px 10%;background:#ffe7ee;text-align:center}
+    .about p{max-width:850px;margin:auto;line-height:1.8}
+    .cart{max-width:680px;margin:25px auto 0;padding:24px;background:#fff;border-radius:16px;box-shadow:0 4px 15px #00000012;text-align:left}
+    .cart h3{color:#f0447b;margin-bottom:14px}
+    .cart-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #eee}
+    .cart-item small{color:#777}.remove{border:0;background:#ff477e;color:#fff;padding:7px 11px;border-radius:8px;cursor:pointer}
+    .total{font-size:21px;font-weight:bold;color:#f0447b;margin:20px 0}
+    .contact{padding:40px 10%;background:#ff719a;color:#fff;text-align:center;line-height:2}
+    .contact h2{color:#fff}
+    footer{background:#302b30;color:#fff;text-align:center;padding:18px;line-height:1.7}
+    @media(max-width:600px){header{justify-content:center}nav{justify-content:center;gap:12px}.hero{padding:45px 6%}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">BÔNG <span>BÉO</span> 🍭</div>
+    <nav>
+      <a href="#home">Trang chủ</a><a href="#products">Sản phẩm</a>
+      <a href="#about">Giới thiệu</a><a href="#cart">Giỏ hàng 🛒</a><a href="#contact">Liên hệ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <h1>ĂN VẶT BÔNG BÉO</h1>
+        <p>Thế giới ăn vặt – Ăn là mê, thử là ghiền!</p>
+        <a class="btn" href="#products">KHÁM PHÁ MENU</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">🍟 🍔 🧋</div>
+    </section>
+
+    <section class="section" id="products">
+      <h2>🍓 MENU ĂN VẶT</h2>
+      <p class="muted">Những món ngon đang chờ bạn khám phá!</p>
+      <input class="search" id="search" type="search" placeholder="🔍 Tìm kiếm món ăn..." aria-label="Tìm kiếm món ăn">
+      <div class="products" id="product-list">
+        <article class="product" data-name="Bánh tráng trộn">
+          <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600" alt="Món ăn vặt" loading="lazy">
+          <h3>Bánh tráng trộn</h3><p>Đậm đà, chua cay hấp dẫn.</p><div class="price">25.000đ</div>
+          <button onclick="addCart('Bánh tráng trộn',25000)">Thêm vào giỏ</button>
+        </article>
+        <article class="product" data-name="Khoai tây chiên">
+          <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600" alt="Khoai tây chiên" loading="lazy">
+          <h3>Khoai tây chiên</h3><p>Giòn rụm, thơm ngon.</p><div class="price">30.000đ</div>
+          <button onclick="addCart('Khoai tây chiên',30000)">Thêm vào giỏ</button>
+        </article>
+        <article class="product" data-name="Gà rán">
+          <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600" alt="Gà rán" loading="lazy">
+          <h3>Gà rán</h3><p>Vỏ giòn, thịt mềm thơm.</p><div class="price">35.000đ</div>
+          <button onclick="addCart('Gà rán',35000)">Thêm vào giỏ</button>
+        </article>
+        <article class="product" data-name="Trà sữa">
+          <img src="https://images.unsplash.com/photo-1558857563-c0c9e5c1c0c6?w=600" alt="Trà sữa" loading="lazy">
+          <h3>Trà sữa</h3><p>Béo thơm, trân châu dai ngon.</p><div class="price">25.000đ</div>
+          <button onclick="addCart('Trà sữa',25000)">Thêm vào giỏ</button>
+        </article>
+        <article class="product" data-name="Xúc xích">
+          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=600" alt="Xúc xích" loading="lazy">
+          <h3>Xúc xích</h3><p>Thơm ngon, hấp dẫn.</p><div class="price">15.000đ</div>
+          <button onclick="addCart('Xúc xích',15000)">Thêm vào giỏ</button>
+        </article>
+        <article class="product" data-name="Tokbokki">
+          <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600" alt="Tokbokki" loading="lazy">
+          <h3>Tokbokki</h3><p>Bánh gạo Hàn Quốc cay ngọt.</p><div class="price">35.000đ</div>
+          <button onclick="addCart('Tokbokki',35000)">Thêm vào giỏ</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>💗 VỀ BÔNG BÉO</h2>
+      <p>Bông Béo là cửa hàng chuyên cung cấp các món ăn vặt hấp dẫn dành cho mọi lứa tuổi. Với thực đơn đa dạng, hương vị thơm ngon và mức giá hợp lý, chúng tôi mong muốn mang đến cho khách hàng những trải nghiệm ăn uống vui vẻ và thú vị. Bông Béo – Ăn ngon mỗi ngày, vui vẻ mỗi lúc!</p>
+    </section>
+
+    <section class="section" id="cart">
+      <h2>🛒 GIỎ HÀNG CỦA BẠN</h2>
+      <div class="cart">
+        <h3>Danh sách sản phẩm</h3>
+        <div id="cart-items">Chưa có sản phẩm nào.</div>
+        <div class="total" id="total">Tổng tiền: 0đ</div>
+        <button class="btn" onclick="checkout()">ĐẶT HÀNG NGAY</button>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>📞 LIÊN HỆ BÔNG BÉO</h2>
+      <p>Địa chỉ: Hải Phòng, Việt Nam</p>
+      <p>Hotline: 0988 888 888</p>
+      <p>Facebook: Bông Béo Ăn Vặt</p>
+      <p>Thời gian mở cửa: 08:00 – 22:00</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 BÔNG BÉO – Thiên đường ăn vặt</p>
+    <p>Ăn ngon – Giá tốt – Phục vụ tận tâm ❤️</p>
+  </footer>
+
+  <script>
+    const cart = [];
+
+    function formatMoney(number) {
+      return number.toLocaleString('vi-VN') + 'đ';
+    }
+
+    function addCart(name, price) {
+      const item = cart.find(product => product.name === name);
+      if (item) item.quantity++;
+      else cart.push({ name, price, quantity: 1 });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const totalElement = document.getElementById('total');
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItems.textContent = 'Chưa có sản phẩm nào.';
+      } else {
+        cart.forEach((item, index) => {
+          total += item.price * item.quantity;
+          const row = document.createElement('div');
+          row.className = 'cart-item';
+
+          const details = document.createElement('span');
+          details.textContent = `${item.name} × ${item.quantity} — ${formatMoney(item.price * item.quantity)}`;
+
+          const removeButton = document.createElement('button');
+          removeButton.className = 'remove';
+          removeButton.textContent = 'Xóa';
+          removeButton.addEventListener('click', () => {
+            cart.splice(index, 1);
+            updateCart();
+          });
+
+          row.append(details, removeButton);
+          cartItems.appendChild(row);
+        });
+      }
+      totalElement.textContent = 'Tổng tiền: ' + formatMoney(total);
+    }
+
+    document.getElementById('search').addEventListener('input', function () {
+      const keyword = this.value.trim().toLocaleLowerCase('vi');
+      document.querySelectorAll('.product').forEach(product => {
+        const name = product.dataset.name.toLocaleLowerCase('vi');
+        product.style.display = name.includes(keyword) ? '' : 'none';
+      });
+    });
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Giỏ hàng đang trống!');
+        return;
+      }
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      alert('Cảm ơn bạn đã đặt hàng tại Bông Béo!\nTổng thanh toán: ' + formatMoney(total) +
+        '\n\nĐây là bản demo; đơn hàng chưa được gửi đến cửa hàng.');
+      cart.length = 0;
+      updateCart();
+    }
+  </script>
+</body>
+</html>
